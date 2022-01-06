@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>Document</title>
+  </head>
+  <body class="body">
+    <div class="container mt-5">
+      <form class="form bg-light w-50 mx-auto p-3 rounded d-flex flex-column">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label fw-bold"
+            >Vazifa qo`shing</label
+          >
+          <input
+            type="text"
+            class="form-control input"
+            id="exampleInputEmail1"
+            required
+            autocomplete="off"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="user_name" class="form-label fw-bold"
+            >Ismingizni kiriting</label
+          >
+          <input
+            type="text"
+            class="form-control input--name"
+            id="user_name"
+            required
+            autocomplete="off"
+          />
+        </div>
+        <button type="submit" class="btn btn-info w-25 mx-auto mb-3">
+          Qo`shish
+        </button>
+        <ul class="todo__list list-group"></ul>
+      </form>
+    </div>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>

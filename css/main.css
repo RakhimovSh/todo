@@ -1,0 +1,13 @@
+.body {
+  background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8) !important;
+}
+.todo__list {
+  padding: 0;
+  list-style: none;
+}
+
+.input--work:checked + .label--work {
+  color: rgb(177, 0, 0) !important;
+  text-decoration: line-through !important;
+  font-style: italic !important;
+}
