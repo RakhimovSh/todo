@@ -25,16 +25,25 @@ elForm.addEventListener("submit", (evt) => {
     let newLabel = document.createElement("label");
     let newCheckbox = document.createElement("input");
     let newForm = document.createElement("form");
-    newItem.setAttribute("class", "list-group-item");
+    let newBtn = document.createElement("button");
+    newItem.setAttribute("class", "list-group-item d-flex align-items-center");
     newLabel.setAttribute("class", "form-check-label label--work");
     newLabel.setAttribute("for", "user__work");
     newCheckbox.setAttribute("class", "form-check-input ms-1 me-3 input--work");
     newCheckbox.setAttribute("type", "checkbox");
     newCheckbox.setAttribute("id", "user__work");
+    newBtn.setAttribute("class", "btn btn-danger ms-auto");
+    newBtn.setAttribute("type", "button");
     elResult.appendChild(newItem);
     newItem.appendChild(newForm);
+    newItem.appendChild(newBtn);
     newForm.appendChild(newCheckbox);
     newForm.appendChild(newLabel);
     newLabel.textContent = `Vazifa: ${item.work},       Qo'shgan foydalanuvchi: ${item.name}`;
+    newBtn.textContent = "o`chirish";
+    newBtn.addEventListener("click", (evt) => {
+      evt.preventDefault();
+      newItem.classList.add("forDisplay");
+    });
   }
 });
