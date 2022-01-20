@@ -6,11 +6,11 @@
   list-style: none;
 }
 
-.input--work:checked + .label--work {
+/* .input--work:checked + .label--work {
   color: rgb(177, 0, 0) !important;
   text-decoration: line-through !important;
   font-style: italic !important;
-}
+} */
 .forDisplay {
   display: none !important;
 }

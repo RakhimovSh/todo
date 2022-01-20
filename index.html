@@ -10,7 +10,9 @@
   </head>
   <body class="body">
     <div class="container mt-5">
-      <form class="form bg-light w-50 mx-auto p-3 rounded d-flex flex-column">
+      <form
+        class="form bg-light w-50 mx-auto p-3 rounded-top d-flex flex-column"
+      >
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label fw-bold"
             >Vazifa qo`shing</label
@@ -40,6 +42,19 @@
         </button>
         <ul class="todo__list list-group"></ul>
       </form>
+      <div
+        class="btn--collection bg-light rounded-bottom w-50 mx-auto d-flex justify-content-evenly py-4"
+      >
+        <button class="btn btn-primary btn--all">
+          Hammasi: <span class="btn--all-info">0</span>
+        </button>
+        <button class="btn btn-success btn--success">
+          Bajarilganlar: <span class="btn--success-info">0</span>
+        </button>
+        <button class="btn btn-warning btn--fail">
+          Bajarilmaganlar: <span class="btn--fail-info">0</span>
+        </button>
+      </div>
     </div>
 
     <script src="./js/script.js"></script>
