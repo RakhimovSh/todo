@@ -10,7 +10,6 @@ let elBtnFail = document.querySelector(".btn--fail");
 let elAllBtn = document.querySelector(".btn--all");
 
 let todos = [];
-let calcId = [];
 
 elResult.addEventListener("click", (evt) => {
   if (evt.target.matches(".delete-btn")) {
@@ -25,15 +24,13 @@ elResult.addEventListener("click", (evt) => {
     foundCheckbox.isCompleted = !foundCheckbox.isCompleted;
     elResult.innerHTML = null;
     renderTodos(todos, elResult);
-    if (foundCheckbox.isCompleted === true) {
-      calcId.push(toDoCheckboxId);
-    }
-
-    elSuccessInfo.textContent = calcId.length;
   }
 });
 
 let renderTodos = (arr, element) => {
+  elAllItemInfo.textContent = todos.length;
+  elSuccessInfo.textContent = todos.filter((todo) => todo.isCompleted).length;
+  elFailInfo.textContent = todos.filter((todo) => !todo.isCompleted).length;
   for (let item of arr) {
     let newItem = document.createElement("li");
     let newLabel = document.createElement("label");
@@ -82,7 +79,6 @@ elForm.addEventListener("submit", (evt) => {
 
   elResult.innerHTML = null;
   renderTodos(todos, elResult);
-  elAllItemInfo.textContent = todos.length;
 });
 
 elBtnSuccess.addEventListener("click", () => {
@@ -96,14 +92,12 @@ elBtnFail.addEventListener("click", () => {
   let filterFailInfo = todos.filter((todo) => {
     return todo.isCompleted == false;
   });
-  elFailInfo.textContent = filterFailInfo.length;
   elResult.innerHTML = null;
   renderTodos(filterFailInfo, elResult);
 });
 elAllBtn.addEventListener("click", () => {
   let todosCopy = todos.slice();
 
-  elAllItemInfo.textContent = todosCopy.length;
   elResult.innerHTML = null;
   renderTodos(todosCopy, elResult);
 });
