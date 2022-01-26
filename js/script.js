@@ -9,24 +9,6 @@ let elBtnSuccess = document.querySelector(".btn--success");
 let elBtnFail = document.querySelector(".btn--fail");
 let elAllBtn = document.querySelector(".btn--all");
 
-let todos = [];
-
-elResult.addEventListener("click", (evt) => {
-  if (evt.target.matches(".delete-btn")) {
-    let toDoBtnId = evt.target.dataset.todoId * 1;
-    const foundTodoIndex = todos.findIndex((todo) => todo.id === toDoBtnId);
-    todos.splice(foundTodoIndex, 1);
-    elResult.innerHTML = null;
-    renderTodos(todos, elResult);
-  } else if (evt.target.matches(".input--work")) {
-    let toDoCheckboxId = evt.target.dataset.checkboxId * 1;
-    const foundCheckbox = todos.find((todo) => todo.id === toDoCheckboxId);
-    foundCheckbox.isCompleted = !foundCheckbox.isCompleted;
-    elResult.innerHTML = null;
-    renderTodos(todos, elResult);
-  }
-});
-
 let renderTodos = (arr, element) => {
   elAllItemInfo.textContent = todos.length;
   elSuccessInfo.textContent = todos.filter((todo) => todo.isCompleted).length;
@@ -61,6 +43,28 @@ let renderTodos = (arr, element) => {
   }
 };
 
+const localTodos = JSON.parse(window.localStorage.getItem("todos"));
+let todos = localTodos || [];
+renderTodos(todos, elResult);
+
+elResult.addEventListener("click", (evt) => {
+  if (evt.target.matches(".delete-btn")) {
+    let toDoBtnId = evt.target.dataset.todoId * 1;
+    const foundTodoIndex = todos.findIndex((todo) => todo.id === toDoBtnId);
+    todos.splice(foundTodoIndex, 1);
+    elResult.innerHTML = null;
+    renderTodos(todos, elResult);
+    window.localStorage.setItem("todos", JSON.stringify(todos));
+  } else if (evt.target.matches(".input--work")) {
+    let toDoCheckboxId = evt.target.dataset.checkboxId * 1;
+    const foundCheckbox = todos.find((todo) => todo.id === toDoCheckboxId);
+    foundCheckbox.isCompleted = !foundCheckbox.isCompleted;
+    elResult.innerHTML = null;
+    renderTodos(todos, elResult);
+    window.localStorage.setItem("todos", JSON.stringify(todos));
+  }
+});
+
 elForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
 
@@ -79,6 +83,7 @@ elForm.addEventListener("submit", (evt) => {
 
   elResult.innerHTML = null;
   renderTodos(todos, elResult);
+  window.localStorage.setItem("todos", JSON.stringify(todos));
 });
 
 elBtnSuccess.addEventListener("click", () => {
